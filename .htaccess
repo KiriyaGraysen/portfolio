@@ -1,0 +1,21 @@
+DirectoryIndex index.php
+
+RewriteEngine On
+
+# 1. REDIRECT THE EXACT ROOT URL TO /home
+# ^$ matches an empty string, which represents the exact root of the domain.
+RewriteRule ^$ /home [R=301,L]
+
+# 2. REDIRECT index.php TO /home (IF TYPED DIRECTLY)
+# Checks the raw request to prevent looping, then redirects.
+RewriteCond %{THE_REQUEST} /index\.php [NC]
+RewriteRule ^index\.php$ /home [R=301,L]
+
+# 3. TELL THE SERVER /home ACTUALLY MEANS index.php
+# Silently loads index.php in the background when /home is requested.
+RewriteRule ^home/?$ index.php [L]
+
+# 4. HIDE .PHP EXTENSION FOR ALL OTHER PAGES
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
