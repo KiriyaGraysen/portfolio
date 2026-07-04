@@ -5,221 +5,147 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://kit.fontawesome.com/922051305a.js" crossorigin="anonymous"></script>
   
   <title>Portfolio</title>
   
-  <!-- Styling for webpage -->
   <style>
     * {
       box-sizing: border-box;
     }
-  
-    body {
-      margin: 0px;
-      padding: 0px;
-      background-color: white;
-      font-family: Arial;
-      min-height: 100vh;
-    }
     
-    .nav-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      background-color: rgb(25, 25, 25);
-      color: white;
-    }
-    
-    .nav-bar {
-      width: 350px;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      list-style: none;
-    }
-    
-    .nav-link a {
-      color: white;
-      text-decoration: none;
-    }
-    
-    .about-me-container {
-      width: 100%;
-      display: flex;
-      border-bottom: 2px solid black;
-    }
-    
-    .about-me,
-    .personal-info {
-      width: 50%;
-      padding: 20px 50px;
-    }
-    
-    .about-me h3,
-    .personal-info h3 {
-      text-align: center;
-      margin: 0 0 30px 0;
-    }
-    
-    .personal-info span {
-      font-weight: bold;
-    }
-    
-    .personal-info p {
-      margin: 0px;
-      padding: 0px;
-      line-height: 1.5;
-    }
-    
-    .projects-container {
-      display: block;
-      width: 100%;
-      height: 300px;
-      padding: 0px 50px;
-    }
-    
-    .projects-container h3 {
-      text-align: center;
-    }
-    
-    .projects-view-container {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      height: 300px;
-      border: 2px solid black;
-    }
-    
-    .project-left-arrow,
-    .project-right-arrow {
-      font-size: 40px;
-    }
-    
-    .project-card-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid black;
-    }
-    
-    .project-card-container > .project-card:nth-child(2) {
-      margin-right: 10px;
-      margin-left: 10px;
-    }
-    
-    .project-card {
-      width: 220px;
-      border: 2px solid black;
-      border-radius: 30px;
-      overflow: hidden;
-    }
-    
-    .project-card .project-image {
-      width: 100%;
-    }
-    
-    .project-card h3 {
-      text-align: center;
-    }
-    
-    .project-card a {
-      display: block;
-      margin-bottom: 10px;
-      color: green;
-      font-weight: bold;
-      text-align: center;
-      text-decoration: underline;
-      cursor: pointer;
-    }
-    
-    .status {
-      text-align: center;
-      margin-bottom: 14px;
-    }
-    
-    .status span {
-      font-size: 10px;
-      padding: 4px 10px;
-      background-color: green;
-      border: 3px solid darkgreen;
-      border-radius: 10px;
-      color: white;
+    @theme {
+      --font-sans: "Inter", sans-serif;
     }
   </style>
-  
 </head>
-<body>
-  <nav class="nav-container">
-    <ul class="nav-bar">
-      <li class="nav-link">
-        <a href="index.html">Home</a>
+<body class="m-0 p-0 bg-zinc-950">
+  
+  <!--
+    This section is the hero section or header of the portfolio.
+    It has the navigation and description of the role I'm currently applying
+  -->
+  
+  <nav class="flex justify-center items-center px-4 py-6 bg-zinc-900 border-b border-b-zinc-500">
+    <ul class="text-white flex justify-center items-center font-bold">
+      <li>
+        <a href="index.html" class="cursor-pointer">HOME</a>
       </li>
       
-      <li class="nav-link">
-        <a href="about.html">About</a>
+      <li class="mx-4">
+        <a href="about.html" class="cursor-pointer">ABOUT</a>
       </li>
       
-      <li class="nav-link">
-        <a href="projects.html">Projects</a>
+      <li>
+        <a href="projects.html" class="cursor-pointer">PROJECTS</a>
       </li>
     </ul>
   </nav>
   
   <main>
-    <section class="about-me-container">
-      <div class="personal-info">
-        <h3>Personal Information</h3>
-        <p><span>Name:</span> Sherwin B. Samonte</p>
-        <p><span>Age:</span> 21</p>
-        <p><span>Email:</span> sherwinsamonte56@gmail.com</p>
+    <section class="py-6 flex w-full text-white border-b-2 border-b-zinc-500">
+      <div class="flex flex-1 justify-center">
+        <div>
+          <p class="mb-4 text-xl text-center font-bold">Personal Information</p>
+          <p><span class="font-bold text-base">Name:</span> Sherwin B. Samonte</p>
+          <p><span class="font-bold text-base">Age:</span> 21</p>
+          <p><span class="font-bold text-base">Email:</span> sherwinsamonte56@gmail.com</p>
+        </div>
       </div>
       
-      <div class="about-me">
-        <h3>About Me</h3>
+      <div class="flex flex-1 justify-center">
+        <div>
+          <p class="mb-4 text-xl text-center font-bold">About Me</p>
+          <p>I am an Information System student and an aspiring AI Engineer. I enjoy overcoming hardware limitations to build functional systems, using creative problem-solving to learn new things and develop impactful projects.</p>
+        </div>
       </div>
     </section>
     
-    <section class="projects-container">
-      <h3>Projects</h3>
-      <div class="projects-view-container">
-        <div class="project-left-arrow"><i class="fa-solid fa-chevron-left"></i></div>
+    <section class="py-6 mx-auto text-white w-full max-w-6xl">
+      <p class="mb-4 text-xl font-bold text-center">Projects</p>
+      <div class="flex justify-between items-center gap-4 px-4">
+        <div class="text-3xl"><i class="fa-solid fa-chevron-left"></i></div>
         
-        <div class="project-card-container">
-          <div class="project-card">
+        <div class="py-4 flex overflow-x-auto snap-x snap-mandatory gap-6">
+          <div class="flex-none w-full md:w-[calc((100%-3rem)/3)] snap-center text-white rounded-2xl overflow-hidden bg-zinc-900">
             <img class="project-image" src="assets/images/project-01.jpg">
             
-            <h3>Simple Calculator</h3>
-            
-            <div class="status"><span>Completed</span></div>
-            
-            <a>Live View</a>
+            <div class="py-4 text-center px-2">
+              <p class="text-xl font-bold mb-3">Simple Calculator</p>
+              
+              <p class="mb-4">A simple calculator using simple HTML, CSS, and JavaScript</p>
+              
+              <p class="my-2 text-xs font-semibold"><span class="py-1 px-3 bg-emerald-900/20 border rounded-full border-emerald-800/20 rounded-lg border-3 border-emerald-800/30 text-emerald-400">Completed</span></p>
+            </div>
           </div>
           
-          <div class="project-card">
+          <div class="flex-none w-full md:w-[calc((100%-3rem)/3)] snap-center text-white rounded-2xl overflow-hidden bg-zinc-900">
             <img class="project-image" src="assets/images/project-01.jpg">
             
-            <h3>Simple Calculator</h3>
-            
-            <div class="status"><span>Completed</span></div>
-            
-            <a>Live View</a>
+            <div class="py-4 text-center px-2">
+              <p class="text-xl font-bold mb-3">Simple Calculator</p>
+              
+              <p class="mb-4">A simple calculator using simple HTML, CSS, and JavaScript</p>
+              
+              <p class="my-2 text-xs font-semibold"><span class="py-1 px-3 bg-emerald-900/20 border rounded-full border-emerald-800/20 rounded-lg border-3 border-emerald-800/30 text-emerald-400">Completed</span></p>
+            </div>
           </div>
           
-          <div class="project-card">
+          <div class="flex-none w-full md:w-[calc((100%-3rem)/3)] snap-center text-white rounded-2xl overflow-hidden bg-zinc-900">
             <img class="project-image" src="assets/images/project-01.jpg">
             
-            <h3>Simple Calculator</h3>
+            <div class="py-4 text-center px-2">
+              <p class="text-xl font-bold mb-3">Simple Calculator</p>
+              
+              <p class="mb-4">A simple calculator using simple HTML, CSS, and JavaScript</p>
+              
+              <p class="my-2 text-xs font-semibold"><span class="py-1 px-3 bg-emerald-900/20 border rounded-full border-emerald-800/20 rounded-lg border-3 border-emerald-800/30 text-emerald-400">Completed</span></p>
+            </div>
+          </div>
+          
+          <div class="flex-none w-full md:w-[calc((100%-3rem)/3)] snap-center text-white rounded-2xl overflow-hidden bg-zinc-900">
+            <img class="project-image" src="assets/images/project-01.jpg">
             
-            <div class="status"><span>Completed</span></div>
+            <div class="py-4 text-center px-2">
+              <p class="text-xl font-bold mb-3">Simple Calculator</p>
+              
+              <p class="mb-4">A simple calculator using simple HTML, CSS, and JavaScript</p>
+              
+              <p class="my-2 text-xs font-semibold"><span class="py-1 px-3 bg-emerald-900/20 border rounded-full border-emerald-800/20 rounded-lg border-3 border-emerald-800/30 text-emerald-400">Completed</span></p>
+            </div>
+          </div>
+          
+          <div class="flex-none w-full md:w-[calc((100%-3rem)/3)] snap-center text-white rounded-2xl overflow-hidden bg-zinc-900">
+            <img class="project-image" src="assets/images/project-01.jpg">
             
-            <a>Live View</a>
+            <div class="py-4 text-center px-2">
+              <p class="text-xl font-bold mb-3">Simple Calculator</p>
+              
+              <p class="mb-4">A simple calculator using simple HTML, CSS, and JavaScript</p>
+              
+              <p class="my-2 text-xs font-semibold"><span class="py-1 px-3 bg-emerald-900/20 border rounded-full border-emerald-800/20 rounded-lg border-3 border-emerald-800/30 text-emerald-400">Completed</span></p>
+            </div>
+          </div>
+          
+          <div class="flex-none w-full md:w-[calc((100%-3rem)/3)] snap-center text-white rounded-2xl overflow-hidden bg-zinc-900">
+            <img class="project-image" src="assets/images/project-01.jpg">
+            
+            <div class="py-4 text-center px-2">
+              <p class="text-xl font-bold mb-3">Simple Calculator</p>
+              
+              <p class="mb-4">A simple calculator using simple HTML, CSS, and JavaScript</p>
+              
+              <p class="my-2 text-xs font-semibold"><span class="py-1 px-3 bg-emerald-900/20 border rounded-full border-emerald-800/20 rounded-lg border-3 border-emerald-800/30 text-emerald-400">Completed</span></p>
+            </div>
           </div>
         </div>
         
-        <div class="project-right-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="text-3xl"><i class="fa-solid fa-chevron-right"></i></div>
       </div>
     </section>
   </main>
