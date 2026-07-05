@@ -9,12 +9,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
+  <!-- Basic Icons -->
+  <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+  <!-- Filled Icons -->
+  <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+  <!-- Brand Icons -->
+  <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+  
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://kit.fontawesome.com/922051305a.js" crossorigin="anonymous"></script>
   
   <title>Portfolio</title>
   
-  <style>
+  <style type="text/tailwindcss">
     * {
       box-sizing: border-box;
     }
@@ -22,91 +29,250 @@
     @theme {
       --font-sans: "Inter", sans-serif;
     }
+    
+    @custom-variant dark (&:where(.dark, .dark *));
+    
+    nav a:hover, 
+    footer a:hover,
+    .fa-chevron-left:hover,
+    .fa-chevron-right:hover {
+      color: #818cf8 !important; /* This is the exact hex for indigo-400 */
+    }
   </style>
 </head>
-<body class="m-0 p-0 bg-zinc-950">
+<body class="m-0 p-0 bg-gray-50 dark:bg-zinc-950 transition-colors font-sans">
   
   <!--
     This section is the hero section or header of the portfolio.
     It has the navigation and description of the role I'm currently applying
   -->
-  <div class="relative flex flex-col isolate min-h-screen bg-gradient-to-b from-zinc-900 to-zinc-950">
+  <div class="relative flex flex-col justify-between isolate min-h-svh">
     <!-- Navigation -->
-    <header class="w-full pt-8 px-6 lg:px-8 z-50">
-      <nav class="text-white text-sm font-semibold tracking-wide">
-        <ul class="flex justify-center items-center gap-x-8 sm:gap-x-12">
-          <li class="cursor-pointer hover:text-indigo-400 transition-colors">Home</li>
-          <li class="cursor-pointer hover:text-indigo-400 transition-colors">About</li>
-          <li class="cursor-pointer hover:text-indigo-400 transition-colors">Projects</li>
-          <li class="cursor-pointer hover:text-indigo-400 transition-colors">Contact Me</li>
-        </ul>
-      </nav>
-    </header>
+    <header class="w-full pt-6 px-6 lg:px-8 z-50">
+  
+      <div class="relative flex items-center justify-center w-full">
+        
+        <nav class="text-zinc-950 dark:text-gray-50 text-sm font-semibold tracking-wide w-full">
+          <ul class="flex justify-center items-center gap-x-8 sm:gap-x-12">
+            <li><a href="index.html" class="cursor-pointer hover:text-indigo-400 active:text-indigo-400 transition-colors">Home</a></li>
+            <li><a href="#" class="cursor-pointer hover:text-indigo-400 active:text-indigo-400 transition-colors">About</a></li>
+            <li><a href="#projects" class="cursor-pointer hover:text-indigo-400 active:text-indigo-400 transition-colors">Projects</a></li>
+            <li><a href="#" class="cursor-pointer hover:text-indigo-400 active:text-indigo-400 transition-colors">Contact Me</a></li>
+          </ul>
+        </nav>
     
-    <!-- Blob design in the background -->
-    <div aria-hidden="true" class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl">
-      <div 
-        class="relative left-[calc(50%-11rem)] sm:left-[calc(50%-30rem)] aspect-[1155/678] w-[36rem] sm:w-[72rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
-        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+        <button id="theme-toggle" class="absolute right-0 top-1/2 -translate-y-1/2 text-gray-50 hover:text-indigo-400 active:text-indigo-400 transition-colors text-lg cursor-pointer">
+          <i id="toggle-icon" class="fa-solid fa-sun"></i>
+        </button>
+        
       </div>
-    </div>
-    
-    <!-- The Hero section -->
-    <div class="flex-1 flex flex-col justify-center items-center px-6 text-center z-10">
-      <h1 class="text-5xl text-white font-bold tracking-tight">
-        Full Stack Web Developer<br>
-        <span class="text-indigo-400">Freelancer</span>
-      </h1>
-      <p class="text-gray-300 text-lg mt-6 leading-8 max-w-2xl max-auto">
-        I build system for businesses such as POS, Inventory Management System, etc., using HTML, CSS, JavaScript, and PHP. Currently taking Machine Learning and Data Analysis Courses.
-      </p>
       
-      <div class="mt-10 flex justify-center gap-x-6">
-        <a href="#projects" class="rounded-md bg-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 transition-all hover:-translate-y-1">
-          View My Projects
-        </a>
+    </header>
+
+    
+    <svg class="absolute inset-0 w-full h-full text-indigo-600 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 100" fill="currentColor">
+      <path d="M 100 0 L 95 0 C 50 0 50 100 25 100 L 100 100 Z"></path>
+    </svg>
+    
+    <div class="relative z-10 flex h-full items-center">
+      
+      <div class="w-1/2 p-12 lg:p-16">
+        <h2 class="text-4xl font-bold dark:text-indigo-400 text-indigo-600 mb-4 uppercase">Sherwin B. Samonte</h2>
+        <p class="text-zinc-950 dark:text-gray-50 leading-relaxed">
+          This content sits securely over the white background. You can put your text, forms, or images here.
+        </p>
+      </div>
+      
+      <div class="w-1/2 p-12 lg:p-16 text-right flex flex-col items-end">
+        <div class="bg-gray-50 border-2 border-zinc-950 rounded-full overflow-hidden max-w-[17rem] aspect-square shadow-xl">
+          <img src="assets/images/profile.png" class="w-full h-full object-cover">
+        </div>
       </div>
     </div>
     
-    <!-- Another blob -->
-    <div aria-hidden="true" class="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl">
-      <div
-        class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20"
-        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-      </div>
+    <div class="relative py-6 px-10 bg-zinc-950 flex items-center gap-x-6 text-gray-50 border-t border-b border-zinc-800 shadow-sm">
+      <a href="https://www.linkedin.com/profile/in/sherwin-samonte-296a0b1aa/https://www.linkedin.com/in/sherwin-samonte-296a0b1aa?utm_source=share_via&utm_content=profile&utm_medium=member_androidhttps://www.linkedin.com/profile/in/sherwin-samonte-296a0b1aa/" target="_blank" class="cursor-pointer"><i class="fa-brands fa-square-linkedin text-2xl"></i></a>
+      <a href="https://github.com/KiriyaGraysen" target="_blank" class="cursor-pointer"><i class="fa-brands fa-github text-2xl"></i></a>
+      <a href="https://www.instagram.com/samonts_56/" target="_blank" class="cursor-pointer"><i class="fa-brands fa-instagram text-2xl"></i></a>
     </div>
   </div>
   
   <main>
     <!-- About me section -->
-    <section class="p-8 flex flex-col md:flex-row gap-8 mx-auto w-full max-w-6xl text-white">
+    <section class="p-8 w-full max-w-6xl mx-auto">
       
-      <div class="flex-1 flex flex-col bg-zinc-900 p-8 rounded-md border border-zinc-800">
-        <p class="mb-4 text-xl text-center font-bold">Personal Information</p>
-        <p><span class="font-bold text-base">Name:</span> Sherwin B. Samonte</p>
-        <p><span class="font-bold text-base">Age:</span> 21</p>
-        <p><span class="font-bold text-base">Email:</span> sherwinsamonte56@gmail.com</p>
-      </div>
-      
-      <div class="flex-1 flex flex-col justify-center bg-zinc-900 p-8 rounded-md border border-zinc-800">
-        <p class="mb-4 text-xl text-center font-bold">About Me</p>
-        <p>I am an Information System student and an aspiring AI Engineer. I enjoy overcoming hardware limitations to build functional systems, using creative problem-solving to learn new things and develop impactful projects.</p>
+      <div class="py-8 px-4 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl shadow-sm">
+        <p class="mb-4 text-2xl text-center dark:text-indigo-400 text-indigo-600 font-bold uppercase">About Me</p>
+        <p class="text-zinc-950 dark:text-gray-50">I am an Information System student and an aspiring AI Engineer. I enjoy overcoming hardware limitations to build functional systems, using creative problem-solving to learn new things and develop impactful projects.</p>
       </div>
 
     </section>
-
+    
+    <!-- Technologies I work with section -->
+    <section class="p-8 border-t border-gray-200 dark:border-zinc-800 transition-colors">
+      
+      <p class="mb-4 text-2xl font-bold text-center dark:text-indigo-400 text-indigo-600 uppercase">Technologies I Work With</p>
+      <div class="pb-2 flex overflow-x-auto gap-6 text-zinc-950 dark:text-gray-50 snap-x snap-mandatory"> 
+        <div class="flex-none md:w-[calc((100%-3rem)/3)] w-[calc((100%-1.5rem)/2)] space-y-4 snap-start ">
+          <div class="flex justify-between items-center w-full rounded-lg bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+            <div class="p-4 border-r border-gray-200 dark:border-zinc-800">
+              <i class="fa-brands fa-html5 text-orange-600 text-4xl"></i>
+            </div>
+            
+            <div class="w-full flex-col">
+              <div class="px-2 w-full flex justify-between items-baseline">
+                <p class="font-mono">HTML</p>
+                <p class="font-mono text-xs">85%</p>
+              </div>
+              
+              <div class="w-full my-auto px-2">
+                <div class="w-full h-2 rounded-full border border-emerald-600 overflow-hidden">
+                  <div class="w-[85%] h-full bg-emerald-800"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex justify-between items-center w-full rounded-lg bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+            <div class="p-4 border-r border-gray-200 dark:border-zinc-800">
+              <i class="fa-brands fa-css3-alt text-blue-600 text-4xl"></i>
+            </div>
+            
+            <div class="w-full flex-col">
+              <div class="px-2 w-full flex justify-between items-baseline">
+                <p class="font-mono">CSS</p>
+                <p class="font-mono text-xs">85%</p>
+              </div>
+              
+              <div class="w-full my-auto px-2">
+                <div class="w-full h-2 rounded-full border border-emerald-600 overflow-hidden">
+                  <div class="w-[85%] h-full bg-emerald-800"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex-none md:w-[calc((100%-3rem)/3)] w-[calc((100%-1.5rem)/2)] space-y-4 snap-start ">
+          <div class="flex justify-between items-center w-full rounded-lg bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+            <div class="p-4 border-r border-gray-200 dark:border-zinc-800">
+              <i class="fa-brands fa-square-js text-yellow-400 text-4xl"></i>
+            </div>
+            
+            <div class="w-full flex-col">
+              <div class="px-2 w-full flex justify-between items-baseline">
+                <p class="font-mono hidden md:inline">JavaScript</p>
+                <p class="font-mono md:hidden">JS</p>
+                <p class="font-mono text-xs">85%</p>
+              </div>
+              
+              <div class="w-full my-auto px-2">
+                <div class="w-full h-2 rounded-full border border-emerald-600 overflow-hidden">
+                  <div class="w-[85%] h-full bg-emerald-800"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex justify-between items-center w-full rounded-lg bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+            <div class="p-4 border-r border-gray-200 dark:border-zinc-800">
+              <i class="fa-brands fa-php text-blue-800 text-4xl"></i>
+            </div>
+            
+            <div class="w-full flex-col">
+              <div class="px-2 w-full flex justify-between items-baseline">
+                <p class="font-mono">PHP</p>
+                <p class="font-mono text-xs">85%</p>
+              </div>
+              
+              <div class="w-full my-auto px-2">
+                <div class="w-full h-2 rounded-full border border-emerald-600 overflow-hidden">
+                  <div class="w-[85%] h-full bg-emerald-800"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><div class="flex-none md:w-[calc((100%-3rem)/3)] w-[calc((100%-1.5rem)/2)] space-y-4 snap-start ">
+          <div class="flex justify-between items-center w-full rounded-lg bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+            <div class="p-4 border-r border-gray-200 dark:border-zinc-800">
+              <i class="fa-solid fa-database text-blue-500 text-4xl"></i>
+            </div>
+            
+            <div class="w-full flex-col">
+              <div class="px-2 w-full flex justify-between items-baseline">
+                <p class="font-mono">MySQL</p>
+                <p class="font-mono text-xs">85%</p>
+              </div>
+              
+              <div class="w-full my-auto px-2">
+                <div class="w-full h-2 rounded-full border border-emerald-600 overflow-hidden">
+                  <div class="w-[85%] h-full bg-emerald-800"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex justify-between items-center w-full rounded-lg bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+            <div class="p-4 border-r border-gray-200 dark:border-zinc-800">
+              <i class="fa-brands fa-python text-yellow-400 text-4xl"></i>
+            </div>
+            
+            <div class="w-full flex-col">
+              <div class="px-2 w-full flex justify-between items-baseline">
+                <p class="font-mono">Python</p>
+                <p class="font-mono text-xs">85%</p>
+              </div>
+              
+              <div class="w-full my-auto px-2">
+                <div class="w-full h-2 rounded-full border border-emerald-600 overflow-hidden">
+                  <div class="w-[85%] h-full bg-emerald-800"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
     
     <!-- Project card section -->
-    <section id="projects" class="py-8 px-4 mx-auto w-full max-w-6xl border-t border-white/5">
-      <p class="mb-4 text-2xl font-bold text-center text-white">Projects</p>
+    <section id="projects" class="p-8 mx-auto w-full max-w-6xl border-t border-gray-200 dark:border-zinc-800 transition-colors">
+      <p class="mb-4 text-2xl font-bold text-center dark:text-indigo-400 text-indigo-600 uppercase">Projects</p>
       
       <div class="flex justify-between items-center gap-4">
         <div class="text-3xl text-gray-50"><i class="fa-solid fa-chevron-left"></i></div>
         
         <!-- Project card container -->
-        <div class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-6">
+        <div class="pb-2 flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-x-6">
           
-          <div class="flex-none w-[calc((100%-3rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
+          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+            <img class="project-image" src="assets/images/project-01.jpg">
+            
+            <div class="text-zinc-950 dark:text-gray-50">
+              <div class="py-2 px-4 flex justify-between items-center border-t border-gray-200 dark:border-white/10">
+                <p class="text-xl font-semibold text-center">Simple Web-based Calculator</p>
+              </div>
+              
+              <div class="flex flex-col pb-6 px-4 gap-y-4">
+                <p class="text-base">A simple calculator using simple HTML, CSS, and JavaScript</p>
+                <div>
+                  <ul>
+                    <li class="font-mono">
+                      <i class="fa-brands fa-html5 text-orange-600 text-base pr-5"></i>HTML
+                    </li>
+                    <li class="font-mono">
+                      <i class="fa-brands fa-css3-alt text-blue-600 text-base pr-5"></i>CSS
+                    </li>
+                    <li class="font-mono">
+                      <i class="fa-brands fa-square-js text-yellow-400 text-base pr-5"></i>JavaScript
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
             <img class="project-image" src="assets/images/project-01.jpg">
             
             <div class="text-gray-100">
@@ -134,7 +300,7 @@
             </div>
           </div>
           
-          <div class="flex-none w-[calc((100%-3rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
+          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
             <img class="project-image" src="assets/images/project-01.jpg">
             
             <div class="text-gray-100">
@@ -162,35 +328,7 @@
             </div>
           </div>
           
-          <div class="flex-none w-[calc((100%-3rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
-            <img class="project-image" src="assets/images/project-01.jpg">
-            
-            <div class="text-gray-100">
-              <div class="py-6 px-4 flex justify-between items-center border-b border-b-white/10 gap-x-2">
-                <p class="text-xl font-semibold">Simple Web-based Calculator</p>
-                <p class="text-xs font-semibold"><span class="py-1 px-2 bg-emerald-900/20 rounded-lg border-3 border-emerald-800/30 text-emerald-400">Completed</span></p>
-              </div>
-              
-              <div class="flex flex-col py-6 px-4 gap-y-4">
-                <p class="text-base">A simple calculator using simple HTML, CSS, and JavaScript</p>
-                <div>
-                  <ul>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-html5 text-orange-600 text-base pr-5"></i>HTML
-                    </li>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-css3-alt text-blue-600 text-base pr-5"></i>CSS
-                    </li>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-square-js text-yellow-400 text-base pr-5"></i>JavaScript
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="flex-none w-[calc((100%-3rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
+          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
             <img class="project-image" src="assets/images/project-01.jpg">
             
             <div class="text-gray-100">
@@ -222,16 +360,40 @@
         <div class="text-3xl text-gray-50"><i class="fa-solid fa-chevron-right"></i></div>
       </div>
     </section>
+    
+    <!-- Contact me section -->
+    <section class="p-8 w-full">
+      <div class="max-w-3xl mx-auto flex flex-col bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-lg p-6 gap-y-4 shadow-sm">
+        <p class="mb-4 text-2xl text-center dark:text-indigo-400 text-indigo-600 font-bold uppercase">Contact Me</p>
+        
+        <div class="flex w-full gap-4 text-zinc-950 dark:text-gray-50">
+          <input type="text" class="py-2 px-4 w-[calc(100%/2)] rounded-lg border-2 border-gray-300 dark:border-zinc-700 focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 placeholder-gray-400 dark:placeholder-zinc-500" placeholder="Name">
+          <input type="email" class="py-2 px-4 w-[calc(100%/2)] rounded-lg border-2 border-gray-300 dark:border-zinc-700 focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 placeholder-gray-400 dark:placeholder-zinc-500" placeholder="Email">
+        </div>
+        
+        <div class="text-zinc-950 dark:text-gray-50">
+          <input type="text" class="py-2 px-4 w-full rounded-lg border-2 border-gray-300 dark:border-zinc-700 focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 placeholder-gray-400 dark:placeholder-zinc-500" placeholder="Subject">
+        </div>
+        
+        <div class="text-zinc-950 dark:text-gray-50">
+          <textarea class="py-2 px-4 w-full rounded-lg border-2 border-gray-300 dark:border-zinc-700 focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 min-h-[10rem] placeholder-gray-400 dark:placeholder-zinc-500" placeholder="Message"></textarea>
+        </div>
+        
+        <div class="flex justify-center">
+          <input type="submit" class="py-2 px-5 text-gray-50 font-bold bg-indigo-600 rounded-lg">
+        </div>
+      </div>
+    </section>
   </main>
   
   <footer class="flex justify-center items-center flex-col gap-y-8 bg-zinc-950 py-8 text-gray-400 border-t border-white/5">
     <!-- Nav links -->
     <nav class="text-sm tracking-wide">
       <ul class="flex justify-center items-center gap-x-6 sm:gap-x-6">
-        <li class="cursor-pointer hover:text-indigo-400 transition-colors">Home</li>
-        <li class="cursor-pointer hover:text-indigo-400 transition-colors">About</li>
-        <li class="cursor-pointer hover:text-indigo-400 transition-colors">Projects</li>
-        <li class="cursor-pointer hover:text-indigo-400 transition-colors">Contact Me</li>
+        <li><a href="index.html" class="cursor-pointer hover:text-indigo-400 transition-colors">Home</a></li>
+        <li><a class="cursor-pointer hover:text-indigo-400 hover:underline transition-colors">About</a></li>
+        <li><a class="cursor-pointer hover:text-indigo-400 transition-colors">Projects</a></li>
+        <li><a class="cursor-pointer hover:text-indigo-400 transition-colors">Contact Me</a></li>
       </ul>
     </nav>
     
@@ -250,7 +412,39 @@
   
   <!-- Here are all the JavaScript in this webpage -->
   <script>
+    const themeToggleBtn = document.querySelector('#theme-toggle');
+    const toggleIcon = document.querySelector('#toggle-icon');
+    const htmlElement = document.documentElement;
     
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      htmlElement.classList.add('dark');
+    } else {
+      htmlElement.classList.remove('dark');
+    }
+    
+    updateToggleUI(htmlElement.classList.contains('dark'));
+    
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener("click", () => {
+        htmlElement.classList.toggle('dark');
+        const isDark = htmlElement.classList.contains('dark');
+        
+        localStorage.theme = isDark ? 'dark' : 'light';
+        updateToggleUI(isDark);
+      });
+    }
+    
+    function updateToggleUI(isDark) {
+      if (toggleIcon) {
+        if (isDark) {
+          toggleIcon.classList.remove('fa-sun');
+          toggleIcon.classList.add('fa-moon');
+        } else {
+          toggleIcon.classList.remove('fa-moon');
+          toggleIcon.classList.add('fa-sun');
+        }
+      }
+    }
   </script>
 </body>
 </html>
