@@ -26,12 +26,23 @@
       box-sizing: border-box;
     }
     
+    /* Changes the font from sans to Inter */
     @theme {
       --font-sans: "Inter", sans-serif;
     }
     
+    /* Enables light and dark mode */
     @custom-variant dark (&:where(.dark, .dark *));
     
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    /* Since tailwind hover doesn't work on mobile, I manually applied hover style to elements */
     nav a:hover, 
     footer a:hover,
     .fa-chevron-left:hover,
@@ -79,7 +90,7 @@
       <div class="w-1/2 p-12 lg:p-16">
         <h2 class="text-4xl font-bold dark:text-indigo-400 text-indigo-600 mb-4 uppercase">Sherwin B. Samonte</h2>
         <p class="text-zinc-950 dark:text-gray-50 leading-relaxed">
-          This content sits securely over the white background. You can put your text, forms, or images here.
+          Aspiring programmer who has knowledge about Fullstack, Data Analyst, and Machine Learning.
         </p>
       </div>
       
@@ -112,8 +123,8 @@
     <section class="p-8 border-t border-gray-200 dark:border-zinc-800 transition-colors">
       
       <p class="mb-4 text-2xl font-bold text-center dark:text-indigo-400 text-indigo-600 uppercase">Technologies I Work With</p>
-      <div class="pb-2 flex overflow-x-auto gap-6 text-zinc-950 dark:text-gray-50 snap-x snap-mandatory"> 
-        <div class="flex-none md:w-[calc((100%-3rem)/3)] w-[calc((100%-1.5rem)/2)] space-y-4 snap-start ">
+      <div class="py-2 px-1 flex overflow-x-auto no-scrollbar gap-6 text-zinc-950 dark:text-gray-50 snap-x snap-mandatory"> 
+        <div class="flex-none md:w-[calc((100%-3rem)/3)] w-[calc((100%-1.5rem)/2)] space-y-4 snap-start">
           <div class="flex justify-between items-center w-full rounded-lg bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
             <div class="p-4 border-r border-gray-200 dark:border-zinc-800">
               <i class="fa-brands fa-html5 text-orange-600 text-4xl"></i>
@@ -126,8 +137,8 @@
               </div>
               
               <div class="w-full my-auto px-2">
-                <div class="w-full h-2 rounded-full border border-emerald-600 overflow-hidden">
-                  <div class="w-[85%] h-full bg-emerald-800"></div>
+                <div class="w-full h-2 rounded-full border border-emerald-800 dark:border-emerald-600 overflow-hidden">
+                  <div class="w-[85%] h-full bg-emerald-800 dark:bg-emerald-600"></div>
                 </div>
               </div>
             </div>
@@ -145,15 +156,15 @@
               </div>
               
               <div class="w-full my-auto px-2">
-                <div class="w-full h-2 rounded-full border border-emerald-600 overflow-hidden">
-                  <div class="w-[85%] h-full bg-emerald-800"></div>
+                <div class="w-full h-2 rounded-full border border-emerald-800 dark:border-emerald-600 overflow-hidden">
+                  <div class="w-[85%] h-full bg-emerald-800 dark:bg-emerald-600"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         
-        <div class="flex-none md:w-[calc((100%-3rem)/3)] w-[calc((100%-1.5rem)/2)] space-y-4 snap-start ">
+        <div class="flex-none md:w-[calc((100%-3rem)/3)] w-[calc((100%-1.5rem)/2)] space-y-4 snap-start">
           <div class="flex justify-between items-center w-full rounded-lg bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
             <div class="p-4 border-r border-gray-200 dark:border-zinc-800">
               <i class="fa-brands fa-square-js text-yellow-400 text-4xl"></i>
@@ -167,8 +178,8 @@
               </div>
               
               <div class="w-full my-auto px-2">
-                <div class="w-full h-2 rounded-full border border-emerald-600 overflow-hidden">
-                  <div class="w-[85%] h-full bg-emerald-800"></div>
+                <div class="w-full h-2 rounded-full border border-emerald-800 dark:border-emerald-600 overflow-hidden">
+                  <div class="w-[85%] h-full bg-emerald-800 dark:bg-emerald-600"></div>
                 </div>
               </div>
             </div>
@@ -186,13 +197,13 @@
               </div>
               
               <div class="w-full my-auto px-2">
-                <div class="w-full h-2 rounded-full border border-emerald-600 overflow-hidden">
-                  <div class="w-[85%] h-full bg-emerald-800"></div>
+                <div class="w-full h-2 rounded-full border border-emerald-800 dark:border-emerald-600 overflow-hidden">
+                  <div class="w-[85%] h-full bg-emerald-800 dark:bg-emerald-600"></div>
                 </div>
               </div>
             </div>
           </div>
-        </div><div class="flex-none md:w-[calc((100%-3rem)/3)] w-[calc((100%-1.5rem)/2)] space-y-4 snap-start ">
+        </div><div class="flex-none md:w-[calc((100%-3rem)/3)] w-[calc((100%-1.5rem)/2)] space-y-4 snap-start">
           <div class="flex justify-between items-center w-full rounded-lg bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
             <div class="p-4 border-r border-gray-200 dark:border-zinc-800">
               <i class="fa-solid fa-database text-blue-500 text-4xl"></i>
@@ -205,8 +216,8 @@
               </div>
               
               <div class="w-full my-auto px-2">
-                <div class="w-full h-2 rounded-full border border-emerald-600 overflow-hidden">
-                  <div class="w-[85%] h-full bg-emerald-800"></div>
+                <div class="w-full h-2 rounded-full border border-emerald-800 dark:border-emerald-600 overflow-hidden">
+                  <div class="w-[85%] h-full bg-emerald-800 dark:bg-emerald-600"></div>
                 </div>
               </div>
             </div>
@@ -224,8 +235,8 @@
               </div>
               
               <div class="w-full my-auto px-2">
-                <div class="w-full h-2 rounded-full border border-emerald-600 overflow-hidden">
-                  <div class="w-[85%] h-full bg-emerald-800"></div>
+                <div class="w-full h-2 rounded-full border border-emerald-800 dark:border-emerald-600 overflow-hidden">
+                  <div class="w-[85%] h-full bg-emerald-800 dark:bg-emerald-600"></div>
                 </div>
               </div>
             </div>
@@ -240,124 +251,68 @@
       <p class="mb-4 text-2xl font-bold text-center dark:text-indigo-400 text-indigo-600 uppercase">Projects</p>
       
       <div class="flex justify-between items-center gap-4">
-        <div class="text-3xl text-gray-50"><i class="fa-solid fa-chevron-left"></i></div>
+        <div class="text-3xl text-zinc-950 dark:text-gray-50"><i class="fa-solid fa-chevron-left"></i></div>
         
         <!-- Project card container -->
-        <div class="pb-2 flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-x-6">
+        <div class="py-2 px-1 flex overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth gap-x-6">
           
-          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center snap-always rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
             <img class="project-image" src="assets/images/project-01.jpg">
             
             <div class="text-zinc-950 dark:text-gray-50">
-              <div class="py-2 px-4 flex justify-between items-center border-t border-gray-200 dark:border-white/10">
+              <div class="py-2 px-4 border-t border-gray-200 dark:border-white/10 space-y-2">
                 <p class="text-xl font-semibold text-center">Simple Web-based Calculator</p>
-              </div>
-              
-              <div class="flex flex-col pb-6 px-4 gap-y-4">
                 <p class="text-base">A simple calculator using simple HTML, CSS, and JavaScript</p>
-                <div>
-                  <ul>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-html5 text-orange-600 text-base pr-5"></i>HTML
-                    </li>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-css3-alt text-blue-600 text-base pr-5"></i>CSS
-                    </li>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-square-js text-yellow-400 text-base pr-5"></i>JavaScript
-                    </li>
-                  </ul>
-                </div>
               </div>
             </div>
           </div>
           
-          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
+          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center snap-always rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
             <img class="project-image" src="assets/images/project-01.jpg">
             
-            <div class="text-gray-100">
-              <div class="py-6 px-4 flex justify-between items-center border-b border-b-white/10 gap-x-2">
-                <p class="text-xl font-semibold">Simple Web-based Calculator</p>
-                <p class="text-xs font-semibold"><span class="py-1 px-2 bg-emerald-900/20 rounded-lg border-3 border-emerald-800/30 text-emerald-400">Completed</span></p>
-              </div>
-              
-              <div class="flex flex-col py-6 px-4 gap-y-4">
+            <div class="text-zinc-950 dark:text-gray-50">
+              <div class="py-2 px-4 border-t border-gray-200 dark:border-white/10 space-y-2">
+                <p class="text-xl font-semibold text-center">Simple Web-based Calculator</p>
                 <p class="text-base">A simple calculator using simple HTML, CSS, and JavaScript</p>
-                <div>
-                  <ul>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-html5 text-orange-600 text-base pr-5"></i>HTML
-                    </li>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-css3-alt text-blue-600 text-base pr-5"></i>CSS
-                    </li>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-square-js text-yellow-400 text-base pr-5"></i>JavaScript
-                    </li>
-                  </ul>
-                </div>
               </div>
             </div>
           </div>
           
-          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
+          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center snap-always rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
             <img class="project-image" src="assets/images/project-01.jpg">
             
-            <div class="text-gray-100">
-              <div class="py-6 px-4 flex justify-between items-center border-b border-b-white/10 gap-x-2">
-                <p class="text-xl font-semibold">Simple Web-based Calculator</p>
-                <p class="text-xs font-semibold"><span class="py-1 px-2 bg-emerald-900/20 rounded-lg border-3 border-emerald-800/30 text-emerald-400">Completed</span></p>
-              </div>
-              
-              <div class="flex flex-col py-6 px-4 gap-y-4">
+            <div class="text-zinc-950 dark:text-gray-50">
+              <div class="py-2 px-4 border-t border-gray-200 dark:border-white/10 space-y-2">
+                <p class="text-xl font-semibold text-center">Simple Web-based Calculator</p>
                 <p class="text-base">A simple calculator using simple HTML, CSS, and JavaScript</p>
-                <div>
-                  <ul>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-html5 text-orange-600 text-base pr-5"></i>HTML
-                    </li>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-css3-alt text-blue-600 text-base pr-5"></i>CSS
-                    </li>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-square-js text-yellow-400 text-base pr-5"></i>JavaScript
-                    </li>
-                  </ul>
-                </div>
               </div>
             </div>
           </div>
           
-          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
+          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center snap-always rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
             <img class="project-image" src="assets/images/project-01.jpg">
             
-            <div class="text-gray-100">
-              <div class="py-6 px-4 flex justify-between items-center border-b border-b-white/10 gap-x-2">
-                <p class="text-xl font-semibold">Simple Web-based Calculator</p>
-                <p class="text-xs font-semibold"><span class="py-1 px-2 bg-emerald-900/20 rounded-lg border-3 border-emerald-800/30 text-emerald-400">Completed</span></p>
-              </div>
-              
-              <div class="flex flex-col py-6 px-4 gap-y-4">
+            <div class="text-zinc-950 dark:text-gray-50">
+              <div class="py-2 px-4 border-t border-gray-200 dark:border-white/10 space-y-2">
+                <p class="text-xl font-semibold text-center">Simple Web-based Calculator</p>
                 <p class="text-base">A simple calculator using simple HTML, CSS, and JavaScript</p>
-                <div>
-                  <ul>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-html5 text-orange-600 text-base pr-5"></i>HTML
-                    </li>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-css3-alt text-blue-600 text-base pr-5"></i>CSS
-                    </li>
-                    <li class="font-mono">
-                      <i class="fa-brands fa-square-js text-yellow-400 text-base pr-5"></i>JavaScript
-                    </li>
-                  </ul>
-                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex-none w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] snap-start md:snap-center snap-always rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm">
+            <img class="project-image" src="assets/images/project-01.jpg">
+            
+            <div class="text-zinc-950 dark:text-gray-50">
+              <div class="py-2 px-4 border-t border-gray-200 dark:border-white/10 space-y-2">
+                <p class="text-xl font-semibold text-center">Simple Web-based Calculator</p>
+                <p class="text-base">A simple calculator using simple HTML, CSS, and JavaScript</p>
               </div>
             </div>
           </div>
         </div>
         
-        <div class="text-3xl text-gray-50"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="text-3xl text-zinc-950 dark:text-gray-50"><i class="fa-solid fa-chevron-right"></i></div>
       </div>
     </section>
     
