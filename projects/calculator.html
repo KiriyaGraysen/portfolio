@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="A new web page">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="favicon.ico">
+  
+  <title>Calculator</title>
+  
+  <style>
+    body {
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  main {
+    background-color: black;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  
+  main div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 8px 0px;
+  }
+  
+  main > div:last-child {
+    margin-bottom: 0px;
+  }
+  
+  div > :not(:last-child) {
+    margin-right: 8px;
+  }
+   
+  .text-screen {
+    font-size: 40px;
+    color: white;
+    text-align: right;
+    margin: 20px 0;
+  }
+  
+  button {
+    color: white;
+    font-size: 15px;
+    width: 56px;
+    height: 50px;
+    border-radius: 40%;
+    border: none;
+  }
+  
+  .btn-black {
+    background-color: rgb(40, 40, 40);
+  }
+  
+  .btn-gray {
+    background-color: rgb(75, 75, 75);
+  }
+  
+  .btn-orange {
+    background-color: rgb(191,90,7);
+  }
+  </style>
+  
+</head>
+<body>
+  
+  <main>
+    <p class="text-screen">0</p>
+    
+    <div>
+      <button onclick="
+        updateCalculation('');
+      " class="btn-gray">C</button>
+  
+      <button onclick="
+        updateCalculation('*');
+      " class="btn-gray">*</button>
+  
+      <button onclick="
+        updateCalculation('/');
+      " class="btn-gray">/</button>
+      
+      <button onclick="
+        removeFunc();
+      " class="btn-gray">&#x232B;</button>
+    </div>
+    
+    <div>
+      <button onclick="
+        updateCalculation('7');
+      " class="btn-black">7</button>
+      
+      <button onclick="
+        updateCalculation('8');
+      " class="btn-black">8</button>
+      
+      <button onclick="
+        updateCalculation('9');
+      " class="btn-black">9</button>
+      
+      <button onclick="
+        updateCalculation('-');
+      " class="btn-gray">-</button>
+    </div>
+    
+    <div>
+      <button onclick="
+        updateCalculation('4');
+      " class="btn-black">4</button>
+      
+      <button onclick="
+        updateCalculation('5');
+      " class="btn-black">5</button>
+      
+      <button onclick="
+        updateCalculation('6');
+      " class="btn-black">6</button>
+      
+      <button onclick="
+        updateCalculation('+');
+      " class="btn-gray">+</button>
+    </div>
+    
+    <div>
+      <button onclick="
+        updateCalculation('1');
+      " class="btn-black">1</button>
+      
+      <button onclick="
+        updateCalculation('2');
+      " class="btn-black">2</button>
+      
+      <button onclick="
+        updateCalculation('3');
+      " class="btn-black">3</button>
+      
+      <button onclick="
+        updateCalculation('%');
+      " class="btn-gray">%</button>
+    </div>
+    
+    <div>
+      <button onclick="
+        updateCalculation('+/-');
+      " class="btn-black">&plusmn;</button>
+      
+      <button onclick="
+        updateCalculation('0');
+      " class="btn-black">0</button>
+      
+      <button onclick="
+        updateCalculation('.');
+      " class="btn-black">.</button>
+      
+      <button onclick="
+        updateCalculation('=');
+      " class="btn-orange">=</button>
+    </div>
+  </main>
+  
+  <script>
+    let calculation = '0';
+    const textScreen = document.querySelector('.text-screen');
+    
+    function updateCalculation(s) {
+      if (s === '' || calculation === 'Error') {
+        calculation = '0';
+      } else if (s === '=') {
+        try {
+          if (isNaN(calculation.at(-1))) {
+            calculation = calculation.slice(0, -1);
+          }
+          
+          let evalString = calculation.replace('/%/g', '/100');
+          calculation = String(eval(evalString));
+          
+          if (calculation === 'Infinity') {
+            calculation = 'Error';
+          }
+        } catch (error) {
+          calculation = 'Error';
+        }
+      } else if (s === '+/-') {
+        calculation = calculation.replace(/(-?\d+\.?\d*)$/, (match) => {
+          if (match !== '0') {
+            return match.startsWith('-') ? match.slice(1) : '(-' + match + ')';
+          } else {
+            return match;
+          }
+        });
+      } else {
+        if (calculation === '' && s === '.') {
+          calculation = '0' + s;
+        } else if (calculation === '0' && s === '0') {
+          calculation = '0';
+        } else if (calculation === '0' && !isNaN(s)) {
+          calculation = s;
+        } else if (calculation.at(-1) === ')') {
+          calculation += '*' + s;
+        } else {
+          calculation += s;
+        }
+      }
+      
+      textScreen.innerText = calculation !== '' ? calculation : '0';
+    }
+    
+    function removeFunc() {
+      if (calculation === 'Error') {
+        calculation = '0';
+      } else {
+        calculation = calculation.slice(0, -1);
+      }
+      
+      textScreen.innerText = calculation !== '' ? calculation : '0';
+    }
+    
+    document.addEventListener("keydown", (event) => {
+      if (event.key === 'Backspace') {
+        event.preventDefault();
+        
+        removeFunc();
+      }
+    });
+  </script>
+</body>
+</html>
