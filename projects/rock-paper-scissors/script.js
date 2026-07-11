@@ -23,6 +23,67 @@ function pickComputerMove() {
   }
 }
 
+// Auto play function
+let intervalId;
+let isAutoPlay = false;
+function autoPlay() {
+  const autoPlayBtn = document.querySelector('.auto-play-btn');
+  
+  if (!isAutoPlay) {
+    autoPlayBtn.innerText = 'Stop Auto Play';
+    
+    playGame(pickComputerMove());
+    
+    intervalId = setInterval(() => {
+      playGame(pickComputerMove());
+    }, 1000);
+    
+    isAutoPlay = true;
+  } else {
+    autoPlayBtn.innerText = 'Auto Play';
+    
+    clearInterval(intervalId);
+    
+    isAutoPlay = false;
+  }
+}
+
+// Event listener when clicking rock, paper, and scissors button
+document.querySelector('.rock-btn').addEventListener('click', () => {
+  playGame('rock');
+});
+
+document.querySelector('.paper-btn').addEventListener('click', () => {
+  playGame('paper');
+});
+
+document.querySelector('.scissors-btn').addEventListener('click', () => {
+  playGame('scissors');
+});
+
+document.querySelector('.reset-score-btn').addEventListener('click', () => {
+  score.wins = 0;
+  score.losses = 0;
+  score.ties = 0;
+  localStorage.removeItem('score');
+  updateScore();
+});
+
+document.querySelector('.auto-play-btn').addEventListener("click", () => {
+  autoPlay();
+});
+
+// Controls using keyboard keys
+document.body.addEventListener('keydown', (event) => {
+  if (event.key === 'r') {
+    playGame('rock');
+  } else if (event.key === 'p') {
+    playGame('paper');
+  } else if (event.key === 's') {
+    playGame('scissors');
+  }
+});
+
 function playGame(playerMove) {
   const computerMove = pickComputerMove();
   
@@ -61,7 +122,6 @@ function playGame(playerMove) {
   } else if (result === 'It\'s a tie!') {
     score.ties += 1;
   }
-  
   
   // Stores the score values inside the local storage called score
   localStorage.setItem('score', JSON.stringify(score));
