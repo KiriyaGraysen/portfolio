@@ -1,3 +1,6 @@
+import {cart} from '../data/cart.js';
+import {products} from '../data/products.js';
+
 let productsHTML = '';
 
 products.forEach((product) => {
@@ -55,7 +58,7 @@ products.forEach((product) => {
 
 document.querySelector('.products-grid').innerHTML = productsHTML;
 
-let timeoutId;
+const addedMessageTimeouts = {};
 document.querySelectorAll('.add-to-cart-button').forEach((button) => {
   button.addEventListener('click', () => {
     const { productId } = button.dataset;
@@ -88,22 +91,21 @@ document.querySelectorAll('.add-to-cart-button').forEach((button) => {
     });
     
     document.querySelector('.cart-quantity').innerHTML = String(cartQuantity);
-    const addedToCart = document.querySelector(`.added-to-cart-${productId}`);
     
-    if (!addedToCart.classList.contains('added')) {
-      addedToCart.classList.add('added');
-      
-      timeoutId = setTimeout(() => {
-        addedToCart.classList.remove('added');
-      }, 2000);
-    } else {
-      clearTimeout(timeoutId);
-      
-      addedToCart.classList.add('added');
-      
-      timeoutId = setTimeout(() => {
-        addedToCart.classList.remove('added');
-      }, 2000);
+    const addedToCart = document.querySelector(`.added-to-cart-${productId}`);
+    addedToCart.classList.add('added');
+    
+    // check if there is a previous setTimeouts of the same productId
+    const previousTimeoutId = addedMessageTimeouts[productId];
+    
+    if (previousTimeoutId) {
+      clearTimeout(previousTimeoutId);
     }
+    
+    const timeoutId = setTimeout(() => {
+      addedToCart.classList.remove('added');
+    }, 2000);
+    
+    addedMessageTimeouts[productId] = timeoutId;
   });
 });
