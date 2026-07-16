@@ -1,5 +1,6 @@
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
+import {formatCurrency} from './utils/money.js';
 
 let productsHTML = '';
 
@@ -24,7 +25,7 @@ products.forEach((product) => {
       </div>
 
       <div class="product-price">
-        $${(product.priceCents / 100).toFixed(2)}
+        $${formatCurrency(product.priceCents)}
       </div>
 
       <div class="product-quantity-container">
@@ -62,50 +63,39 @@ const addedMessageTimeouts = {};
 document.querySelectorAll('.add-to-cart-button').forEach((button) => {
   button.addEventListener('click', () => {
     const { productId } = button.dataset;
-    const quantity = Number(document.querySelector(`.quantity-selector-${productId}`).value);
     
-    // check if there's already existing productId to cart lis
-    let matchingItem;
-    cart.forEach((item) => {
-      if (productId === item.productId) {
-        matchingItem = item;
-      }
-    });
+    addToCart(productId);
     
-    // add 1 quantity if there's a match
-    if (matchingItem) {
-      matchingItem.quantity += quantity;
+    updateCartQuantity();
     
-    // add cart object if no match
-    } else {
-      cart.push({
-        productId,
-        quantity
-      });
-    }
-    
-    let cartQuantity = 0;
-    
-    cart.forEach((item) => {
-      cartQuantity += item.quantity;
-    });
-    
-    document.querySelector('.cart-quantity').innerHTML = String(cartQuantity);
-    
-    const addedToCart = document.querySelector(`.added-to-cart-${productId}`);
-    addedToCart.classList.add('added');
-    
-    // check if there is a previous setTimeouts of the same productId
-    const previousTimeoutId = addedMessageTimeouts[productId];
-    
-    if (previousTimeoutId) {
-      clearTimeout(previousTimeoutId);
-    }
-    
-    const timeoutId = setTimeout(() => {
-      addedToCart.classList.remove('added');
-    }, 2000);
-    
-    addedMessageTimeouts[productId] = timeoutId;
+    showAddedMessage(productId);
   });
 });
+
+function updateCartQuantity() {
+  let cartQuantity = 0;
+    
+  cart.forEach((item) => {
+    cartQuantity += item.quantity;
+  });
+  
+  document.querySelector('.cart-quantity').innerHTML = String(cartQuantity);
+}
+
+function showAddedMessage(productId) {
+  const addedToCart = document.querySelector(`.added-to-cart-${productId}`);
+  addedToCart.classList.add('added');
+  
+  // check if there is a previous setTimeouts of the same productId
+  const previousTimeoutId = addedMessageTimeouts[productId];
+  
+  if (previousTimeoutId) {
+    clearTimeout(previousTimeoutId);
+  }
+  
+  const timeoutId = setTimeout(() => {
+    addedToCart.classList.remove('added');
+  }, 2000);
+  
+  addedMessageTimeouts[productId] = timeoutId;
+}
